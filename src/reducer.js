@@ -9,12 +9,20 @@ const test = (state = defaultState, action) => {
     case 'REQUEST':
       return {
         ...state,
+        debounce_waiting: true,
+        response: false,
+      };
+    case 'REQUEST_PENDING':
+      return {
+        ...state,
+        debounce_waiting: false,
         request: true,
         response: false,
       };
     case 'CANCEL_REQUEST':
       return {
         ...state,
+        debounce_waiting: false,
         request: false,
         response: true,
       };

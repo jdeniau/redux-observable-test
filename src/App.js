@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   render() {
-    const { issuedResponse, requestPending } = this.props;
+    const { issuedResponse, requestPending, debounceWaiting } = this.props;
     const { nbClick } = this.state;
 
     return (
@@ -40,6 +40,10 @@ class App extends Component {
         <div className="App-intro">
           <div>
             The current nb click is: {nbClick}
+          </div>
+
+          <div>
+            Waiting debounce ? {debounceWaiting ? 'Yes' : 'No'}
           </div>
 
           <div>
@@ -65,6 +69,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   issuedResponse: state.test.issuedResponse,
+  debounceWaiting: state.test.debounce_waiting,
   requestPending: state.test.request,
 });
 
